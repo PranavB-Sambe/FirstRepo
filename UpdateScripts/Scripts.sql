@@ -1,5 +1,5 @@
 -- Create the StudentDatabase
---CREATE DATABASE StudentDatabase;
+CREATE DATABASE StudentDatabase;
 --GO
 
 -- Use the StudentDatabase
@@ -23,5 +23,5 @@ VALUES
     (2, 'Jane', 'Smith', 'English', 'B'),
     (3, 'Bob', 'Johnson', 'Science', 'C'),
     (4, 'Alice', 'Williams', 'History', 'A'),
-    (5, 'pranav', 'Bhoola', 'English', 'A');
+    (5, 'Pranav', 'Bhoola', 'English', 'A');
 GO
