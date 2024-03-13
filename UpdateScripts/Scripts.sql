@@ -22,5 +22,6 @@ VALUES
     (1, 'John', 'Doe', 'Math', 'A'),
     (2, 'Jane', 'Smith', 'English', 'B'),
     (3, 'Bob', 'Johnson', 'Science', 'C'),
-    (4, 'Alice', 'Williams', 'History', 'A');
+    (4, 'Alice', 'Williams', 'History', 'A'),
+    (5, 'pranav', 'Bhoola', 'English', 'A');
 GO
