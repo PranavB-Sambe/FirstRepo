@@ -1,6 +1,6 @@
 -- Create the StudentDatabase
-CREATE DATABASE StudentDatabase;
-GO
+--CREATE DATABASE StudentDatabase;
+--GO
 
 -- Use the StudentDatabase
 USE StudentDatabase;
