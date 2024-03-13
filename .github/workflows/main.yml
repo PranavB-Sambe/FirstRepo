@@ -23,4 +23,4 @@ jobs:
 
       - name: Run database query from file
         run: |
-          sqlcmd -S ${{URL}} -U sa -P P@$$word20244 -i UpdateScripts/Scripts.sql || echo "sqlcmd failed with exit code $?"
+          sqlcmd -S ${{ URL }} -U sa -P P@$$word20244 -i UpdateScripts/Scripts.sql || echo "sqlcmd failed with exit code $?"
