@@ -1,4 +1,4 @@
-name: Check MSSQL Database
+name: Checkout Local MSSQL Database
 
 on:
   push:
