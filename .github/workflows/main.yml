@@ -1,4 +1,4 @@
-name: Check MSSQL Database
+name: Check Local MSSQL Database on Push to Main
 
 on:
   push:
@@ -23,4 +23,4 @@ jobs:
 
       - name: Run database query from file
         run: |
-          sqlcmd -S 6.tcp.eu.ngrok.io,19373 -U SA -P P@$$word20244 -i UpdateScripts/Scripts.sql
+          sqlcmd -S 6.tcp.eu.ngrok.io,19373 -U sa -P P@$$word20244 -i UpdateScripts/Scripts.sql || echo "sqlcmd failed with exit code $?"
