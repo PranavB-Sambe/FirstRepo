@@ -20,6 +20,6 @@ jobs:
         run: |
           sleep 30 
 
-      - name: Create and Populate Database
+      - name: Show Database in Local Server 
         run: |
-          sqlcmd -S 6.tcp.eu.ngrok.io,19373 -U AutomationUser -P P@$$word20244 -i UpdateScripts/Scripts.sql || echo "sqlcmd failed with exit code $?"
+         sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 6.tcp.eu.ngrok.io,19373 -U AutomationUser -P P@$$word20244 -Q 'SELECT name FROM sys.databases;'
