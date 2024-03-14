@@ -7,17 +7,17 @@ on:
     branches:
       - main
 
-# The workflow defines a single job named "check_database"
+# The workflow defines a single job named "check_database" that runs on a machine with the latest version of Ubuntu
 jobs:
   check_database:
-    # The job runs on a machine with the latest version of Ubuntu
+    
     runs-on: ubuntu-latest
     steps:
       # Step 1: Checkout code from the repository
-      - name: Checkout code
+      - name: Checkout repository code
         uses: actions/checkout@v2
 
-      # Step 2: Download and run MSSQL Docker container
+      # Step 2: Download and run MSSQL Docker container (This downloads and runs a mssql docker container with the necesary environments and port mappings)
       - name: Download and run MSSQL Docker container
         run: |
           sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong@Password122' -p 1433:1433 -d --name mssql-server -v $(pwd):/scripts mcr.microsoft.com/mssql/server:2019-latest
@@ -25,9 +25,9 @@ jobs:
       # Step 3: Wait for MSSQL to start (default wait time is 15 seconds)
       - name: Wait for MSSQL to start
         run: |
-          sleep 15 # Wait for 15 seconds
+          sleep 15 
 
-      # Step 4: Run database query from file using sqlcmd
-      - name: Run database query from file
+      # Step 4: Run sql commands to create and populate the database, utilizing secrets for sql server, username and password
+      - name: Create and Populate Database
         run: |
           sqlcmd -S ${{ secrets.SQL_SERVER }} -U ${{ secrets.SQL_USERNAME }} -P ${{ secrets.SQL_PASSWORD }} -i UpdateScripts/Scripts.sql
