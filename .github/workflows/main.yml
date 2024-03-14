@@ -20,4 +20,4 @@ jobs:
 
       - name: Show Database in Local Server 
         run: |
-          sudo docker exec -i mssql-server /opt/mssql-tools/bin/sqlcmd -S 6.tcp.eu.ngrok.io,19373 -U AutomationUser -P P@$$word20244 -Q 'SELECT name FROM sys.databases;'
+          sudo docker exec -i mssql-server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password122 -Q 'SELECT name FROM sys.databases;'
