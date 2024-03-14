@@ -1,28 +1,42 @@
+name: MSSQL CI
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  check_database:
+  run_sql_scripts:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Download and run MSSQL Docker container
-        run: |
-          sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong@Password122' -p 1433:1433 -d --name mssql-server mcr.microsoft.com/mssql/server:2019-latest
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Wait for MSSQL to start
-        run: |
-          sleep 10
-          
-      - name: Start Docker container if not running
-        run: |
-          sudo docker ps -a | grep -q 'mssql-server' && sudo docker start mssql-server || true
- 
-      - name: Copy SQL script into container
-        run: |
-          sudo docker cp UpdateScripts/Scripts.sql mssql-server:/tmp/script.sql
+    - name: Remove conflicting package
+      run: sudo apt-get remove containerd.io -y
 
-      - name: Show Database in Local Server 
-        run: |
-          sudo docker exec -i mssql-server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password122 -Q 'SELECT name FROM sys.databases;'
+    - name: Update package lists
+      run: sudo apt-get update
+
+    - name: Install Docker
+      run: sudo apt-get install docker.io -y
+
+    - name: Run MSSQL Server
+      run: |
+        sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong@Password123' -p 1433:1433 --name sql1 -d mcr.microsoft.com/mssql/server:2019-latest
+
+    - name: Wait for MSSQL to start
+      run: sleep 30
+
+    - name: Start Docker container if not running
+      run: sudo docker ps -a | grep -q 'sql1' && sudo docker start sql1 || true
+
+    - name: Copy SQL script into container
+      run: sudo docker cp UpdateScripts/Scripts.sql sql1:/tmp/script.sql
+
+    - name: Run SQL script
+      run: |
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password123 -i /tmp/script.sql
+
+   
