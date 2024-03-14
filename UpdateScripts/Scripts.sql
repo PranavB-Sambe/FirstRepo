@@ -19,7 +19,7 @@ GO
 -- Insert sample data into the StudentInformation table
 INSERT INTO StudentInformation (StudentID, FirstName, LastName, Subject, Grade)
 VALUES
-    (1, 'John', 'Doe', 'Math', 'A');
+    (1, 'John', 'Smith', 'Math', 'A');
     
 GO
 
@@ -43,7 +43,7 @@ GO
 
 -- Insert data using the InsertStudent stored procedure
 EXEC InsertStudent
-    @StudentID = 5,
+    @StudentID = 2,
     @FirstName = 'Pranav',
     @LastName = 'Bhoola',
     @Subject = 'Physics',
