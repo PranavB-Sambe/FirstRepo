@@ -25,7 +25,6 @@ jobs:
       # Step 3: Wait for MSSQL to start (default wait time is 10 seconds)
       - name: Wait for MSSQL to start
         run: |
-          echo "Waiting for MSSQL server to start..."
           sleep 15 # Wait for 15 seconds
 
       # Step 4: Run database query from file using sqlcmd
