@@ -16,11 +16,6 @@ jobs:
           sleep 10 
 
 
-      - name: Copy script into container
-        run: |
-          sudo docker cp UpdateScripts/Scripts.sql mssql-server:/scripts/Scripts.sql
-
-
       - name: Show Database in Local Server 
         run: |
           sudo docker exec -i mssql-server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password122 -Q 'SELECT name FROM sys.databases;'
