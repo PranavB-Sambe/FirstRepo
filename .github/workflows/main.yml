@@ -30,4 +30,4 @@ jobs:
       # Step 4: Run database query from file using sqlcmd
       - name: Run database query from file
         run: |
-          sqlcmd -S 6.tcp.eu.ngrok.io,19373 -U AutomationUser -P P@ssword2024 -i UpdateScripts/Scripts.sql
+          sqlcmd -S ${{ secrets.SQL_SERVER }} -U ${{ secrets.SQL_USERNAME }} -P ${{ secrets.SQL_PASSWORD }} -i UpdateScripts/Scripts.sql
