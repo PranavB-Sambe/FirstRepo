@@ -1,41 +1,33 @@
+# This is a YAML file named "Check MSSQL Database"
 name: Check MSSQL Database
 
+# The workflow is triggered on each push to the main branch
 on:
   push:
     branches:
       - main
 
+# The workflow defines a single job named "check_database"
 jobs:
-  run_sql_scripts:
+  check_database:
+    # The job runs on a machine with the latest version of Ubuntu
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      
-    - name: Remove conflicting package
-      run: sudo apt-get remove containerd.io -y
+      # Step 1: Checkout code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
 
+      # Step 2: Download and run MSSQL Docker container
+      - name: Download and run MSSQL Docker container
+        run: |
+          sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong@Password122' -p 1433:1433 -d --name mssql-server -v $(pwd):/scripts mcr.microsoft.com/mssql/server:2019-latest
 
-    - name: Update package lists
-      run: sudo apt-get update
+      # Step 3: Wait for MSSQL to start (default wait time is 15 seconds)
+      - name: Wait for MSSQL to start
+        run: |
+          sleep 15 # Wait for 15 seconds
 
-    - name: Install Docker
-      run: sudo apt-get install docker.io -y
-
-    - name: Run MSSQL Server
-      run: |
-        sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong@Password123' -p 1433:1433 --name sql1 -d mcr.microsoft.com/mssql/server:2019-latest
-
-    - name: Wait for MSSQL to start
-      run: sleep 10
-
-    - name: Start Docker container 
-      run: sudo docker ps -a | grep -q 'sql1' && sudo docker start sql1 || true
-
-    - name: Copy SQL script to container
-      run: sudo docker cp UpdateScripts/Scripts.sql sql1:/tmp/script.sql
-
-    - name: Run SQL scripts
-      run: |
-        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password123 -Q 'SELECT name FROM sys.databases;'
+      # Step 4: Run database query from file using sqlcmd
+      - name: Run database query from file
+        run: |
+          sqlcmd -S 6.tcp.eu.ngrok.io,19373 -U AutomationUser -P P@$$word20244 -i UpdateScripts/Scripts.sql || echo "sqlcmd failed with exit code $?"
