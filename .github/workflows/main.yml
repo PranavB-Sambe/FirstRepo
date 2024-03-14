@@ -22,4 +22,4 @@ jobs:
 
       - name: Run database query from file
         run: |
-          sqlcmd -S 6.tcp.eu.ngrok.io,19373 -U AutomationUser -P P@$$word20244 -i UpdateScripts/Scripts.sql || echo "sqlcmd failed with exit code $?"
+          sqlcmd -S ${{ secrets.SQL_SERVER }} -U ${{ secrets.SQL_USERNAME }} -P ${{ secrets.SQL_PASSWORD }} -i UpdateScripts/Scripts.sql || echo "sqlcmd failed with exit code $?"
