@@ -22,7 +22,7 @@ jobs:
         run: |
           sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong@Password122' -p 1433:1433 -d --name mssql-server -v $(pwd):/scripts mcr.microsoft.com/mssql/server:2019-latest
 
-      # Step 3: Wait for MSSQL to start (default wait time is 10 seconds)
+      # Step 3: Wait for MSSQL to start (default wait time is 15 seconds)
       - name: Wait for MSSQL to start
         run: |
           sleep 15 # Wait for 15 seconds
