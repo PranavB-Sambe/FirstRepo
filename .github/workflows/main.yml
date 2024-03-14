@@ -18,7 +18,8 @@ jobs:
 
       - name: Copy script into container
         run: |
-          sudo docker cp UpdateScripts/Scripts.sql sql1:mssql-server:/scripts/Scripts.sql
+          sudo docker cp UpdateScripts/Scripts.sql mssql-server:/scripts/Scripts.sql
+
 
       - name: Show Database in Local Server 
         run: |
