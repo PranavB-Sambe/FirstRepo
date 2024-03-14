@@ -37,7 +37,7 @@ jobs:
 
     - name: Run SQL scripts
       run: |
-        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 6.tcp.eu.ngrok.io,19373 -U sa -P P@$$word20244 -Q 'SELECT name FROM sys.databases;'
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password123 -Q 'SELECT name FROM sys.databases;'
 
 
    
