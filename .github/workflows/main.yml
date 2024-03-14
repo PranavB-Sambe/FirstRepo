@@ -12,6 +12,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      
+    - name: Remove conflicting package
+      run: sudo apt-get remove containerd.io -y
 
 
     - name: Update package lists
