@@ -1,0 +1,3 @@
+create database employee
+GO
+
