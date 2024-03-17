@@ -1,0 +1,2 @@
+CREATE DATABASE StudentDatabase;
+GO
