@@ -6,6 +6,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - DatabaseAdministration/SQLStatements/UpdateScript.sql
 
 # The workflow defines a single job named "check_database" that runs on a machine with the latest version of Ubuntu
 jobs:
@@ -30,4 +32,4 @@ jobs:
       # Step 4: Run sql commands to create and populate the database, utilizing secrets for sql server, username and password
       - name: Create and Populate Database
         run: |
-          sqlcmd -S ${{ secrets.SQL_SERVER }} -U ${{ secrets.SQL_USERNAME }} -P ${{ secrets.SQL_PASSWORD }} -i DatabaseAdministration/SQLStatements/UpdateScript.sql
+          sqlcmd -S 7.tcp.eu.ngrok.io,17819 -U ${{ secrets.SQL_USERNAME }} -P ${{ secrets.SQL_PASSWORD }} -i DatabaseAdministration/SQLStatements/UpdateScript.sql
