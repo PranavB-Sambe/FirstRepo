@@ -6,8 +6,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - DatabaseAdministration/SQLStatements/UpdateScript.sql
 
 # The workflow defines a single job named "check_database" that runs on a machine with the latest version of Ubuntu
 jobs:
