@@ -71,7 +71,7 @@ EXEC InsertSubject
     @SubjectName = 'Science',
     @Teacher = 'Ms. Parker'; 
 
--- Insert data using the InsertStudent stored procedure
+-- Insert data using the InsertStudent stored procedure 
 EXEC InsertStudent
     @StudentID = 2,
     @FirstName = 'Pranav',
