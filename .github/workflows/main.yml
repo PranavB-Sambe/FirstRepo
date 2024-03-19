@@ -31,4 +31,4 @@ jobs:
       # Step 4: Run SQL commands to create and populate the database, utilizing secrets for SQL server, username, and password
       - name: Create and Populate Database
         run: |
-          sqlcmd -S ${{ secrets.SQL_SERVER }} -U ${{ secrets.SQL_USERNAME }} -P ${{ secrets.SQL_PASSWORD }} -i DatabaseAdministration/SQLStatements/UpdateScript.sql
+          sqlcmd -S 0.tcp.eu.ngrok.io,10426 -U ${{ secrets.SQL_USERNAME }} -P ${{ secrets.SQL_PASSWORD }} -i DatabaseAdministration/SQLStatements/UpdateScript.sql
