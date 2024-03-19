@@ -28,7 +28,6 @@ CREATE TABLE SubjectInformation (
     SubjectID INT,
     SubjectName NVARCHAR(50),
     Teacher NVARCHAR(50),
-    FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID)
 );
 
 GO
