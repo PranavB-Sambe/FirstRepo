@@ -25,7 +25,7 @@ GO
 
 -- Create the SubjectInformation table
 CREATE TABLE SubjectInformation (
-    SubjectID INT FOREIGN KEY,
+    SubjectID INT PRIMARY KEY,
     SubjectName NVARCHAR(50),
     Teacher NVARCHAR(50)
 );
@@ -75,5 +75,5 @@ EXEC InsertStudent
     @StudentID = 2,
     @FirstName = 'Pranav',
     @LastName = 'Bhoola',
-    @Subject = 2,
+    @Subject = 'Science',
     @Grade = 'A'; 
