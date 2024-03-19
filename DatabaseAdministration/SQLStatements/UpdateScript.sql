@@ -67,7 +67,7 @@ GO
 -- Insert data using the InsertSubject stored procedure
 EXEC InsertSubject
     @SubjectID = 2,
-    @SubjectName = 'English',
+    @SubjectName = 'Science',
     @Teacher = 'Ms. Parker'; 
 
 -- Insert data using the InsertStudent stored procedure
@@ -75,5 +75,5 @@ EXEC InsertStudent
     @StudentID = 2,
     @FirstName = 'Pranav',
     @LastName = 'Bhoola',
-    @Subject = 'English',
+    @Subject = 'Science',
     @Grade = 'A'; 
