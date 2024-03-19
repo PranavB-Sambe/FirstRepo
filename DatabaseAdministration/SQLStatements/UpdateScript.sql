@@ -25,10 +25,12 @@ GO
 
 -- Create the SubjectInformation table
 CREATE TABLE SubjectInformation (
-    SubjectID INT PRIMARY KEY,
+    SubjectID INT,
     SubjectName NVARCHAR(50),
-    Teacher NVARCHAR(50)
+    Teacher NVARCHAR(50),
+    FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID)
 );
+
 GO
 
 -- Insert sample data into the SubjectInformation table
