@@ -1,5 +1,5 @@
 param (
-    [string] $ReportPath = "C:\SSRS\SSRSReport2\SSRSReport2\ProductReport.rdl",           
+    [string] $ReportPath = "DatabaseAdministration/SSRS/Reports/ProductReport.rdl",           
     [string] $ReportServerUri = "http://desktop-3949u90/ReportServer",      
     [string] $TargetFolder = "/Test"                           
 )
