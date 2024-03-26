@@ -27,7 +27,7 @@ jobs:
           Import-Module -Name ReportingServicesTools
 
           # Path to the PowerShell script in your repository
-          $ScriptPath = "./path/to/your/script.ps1"
+          $ScriptPath = "./DeployReport.ps1"
 
           # Execute the PowerShell script
-          & $DeployReport.ps1
+          & $ScriptPath
