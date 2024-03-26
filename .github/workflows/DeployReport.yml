@@ -1,0 +1,33 @@
+name: Deploy SSRS Report
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_report:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PowerShell
+        uses: microsoft/powershell@v1
+
+      - name: Install ReportingServicesTools module
+        shell: pwsh
+        run: Install-Module -Name ReportingServicesTools -Force -Scope CurrentUser
+
+      - name: Deploy SSRS report
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          # Import ReportingServicesTools module
+          Import-Module -Name ReportingServicesTools
+
+          # Path to the PowerShell script in your repository
+          $ScriptPath = "./path/to/your/script.ps1"
+
+          # Execute the PowerShell script
+          & $DeployReport.ps1
