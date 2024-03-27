@@ -1,4 +1,4 @@
-name: Deploy SSRS Report
+name: Deploy-SSRS-Report
 
 on:
   push:
