@@ -1,4 +1,4 @@
---Question 1 
+--Question 1
 
 select * from [HumanResources].[Employee]
 order by JobTitle 
@@ -165,6 +165,6 @@ avg(OrderQty) over (partition by  SalesOrderID) as "Avg Quantity",
 count(OrderQty) over (partition by  SalesOrderID) as "No of Orders",
 min(OrderQty) over (partition by SalesOrderID) as "Min Quantity",
 max(OrderQty) over (partition by  SalesOrderID) as "Max Quantity"
-from [Sales].[SalesOrderDetail] where SalesOrderID in (43659,43664)
+from [Sales].[SalesOrderDetail] where SalesOrderID in (43659,43664) 
    
 
